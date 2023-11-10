@@ -1,12 +1,14 @@
 const modal = document.querySelector('modal');
-const btn = document.querySelector('show-success')
+const btn = document.querySelector('btn-danger')
 const button = document.querySelector('btn-success');
 const close = document.querySelector('modal-close');
 
-btn.onclick = () => {
-	alert(button);
-}
+function press_button() {
+	alert(button)
+};
 
-close.onclick = () => {
-	alert(close);
+btn.onclick = press_button;
+
+function close() {
+
 }
