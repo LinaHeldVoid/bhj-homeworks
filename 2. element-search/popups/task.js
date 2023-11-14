@@ -1,14 +1,18 @@
-const modal = document.querySelector('modal');
-const btn = document.querySelector('btn-danger')
-const button = document.querySelector('btn-success');
-const close = document.querySelector('modal-close');
+let modalMain = document.getElementsById('modal_main');
+const modalSuccess = document.getElementById('modal_success');
+const btn = document.querySelector('.show_success');
+const close = document.querySelector('.modal_close');
 
-function press_button() {
-	alert(button)
-};
+modalMain.classlist.add('modal_active');
+alert(modalMain.className);
 
-btn.onclick = press_button;
+// function pressButton() {
+// 	alert(modalSuccess)
+// };
 
-function close() {
+// function close() {
 
-}
+// }
+
+// alert(modalMain);
+// btn.onclick = pressButton;
