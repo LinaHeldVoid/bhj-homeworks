@@ -1,18 +1,32 @@
-let modalMain = document.getElementsById('modal_main');
+const modalMain = document.getElementById("modal_main");
 const modalSuccess = document.getElementById('modal_success');
-const btn = document.querySelector('.show_success');
-const close = document.querySelector('.modal_close');
+const btn = document.querySelector('.btn_danger');
+const close = document.querySelectorAll('.modal__close_times');
 
-modalMain.classlist.add('modal_active');
-alert(modalMain.className);
+close1 = close[0];
+close2 = close[1];
 
-// function pressButton() {
-// 	alert(modalSuccess)
-// };
+//управление видимостью окон
+function switchModal(modal) {
+	modal.classList.toggle('modal_active');
+};
 
-// function close() {
+//алгоритм
+function summonModal() {
+	switchModal(modalMain);
 
-// }
+	btn.onclick = () => {
+		switchModal(modalMain);
+		switchModal(modalSuccess);	
+	};
 
-// alert(modalMain);
-// btn.onclick = pressButton;
+	close1.onclick = () => {
+		switchModal(modalMain);
+	};
+
+	close2.onclick = () => {
+		switchModal(modalSuccess);
+	};
+};
+
+summonModal();
