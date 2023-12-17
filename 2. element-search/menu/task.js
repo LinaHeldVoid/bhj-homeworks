@@ -1,30 +1,31 @@
 const menuBar = document.querySelectorAll('.menu__link');
+const subs = document.querySelectorAll('.menu_sub');
+subsArr = Array.from(subs);
+menuBarArr = Array.from(menuBar);
 
-// function closeSuBs() {
-// 	const subs = document.querySelectorAll('.menu_sub');
 
-// 	for (let sub of Array.from(subs)) {
-// 		if sub.classList.includes('menu_active') {
-// 			sub.classList.toggle('menu_active');
-// 		}
-
-// 		return false;
+// function findSuBsActive(element) {
+// 		return element.classList.contains('menu_active')
 // 	}
-// 	return;
-// }
 
-for (let menu of Array.from(menuBar)) {
+for (let menu of menuBarArr) {
 
 	menu.onclick = () => {
+
+		// num = subsArr.findIndex(findSuBsActive)
+		// if (num != -1) {
+		// 	alert(num)
+		// 	subsArr[num].classList.toggle('menu_active')
+		// }
+
 		const subList = menu.closest('.menu__item');
 		menuSub = subList.querySelector('.menu_sub');
 
             if (menuSub) {
-            	// closeSuBs
-                menuSub.classList.toggle("menu_active");
-            }
+                menuSub.classList.toggle('menu_active');
 
-            return false;
+                return false;
+            }
 
 	}
 }

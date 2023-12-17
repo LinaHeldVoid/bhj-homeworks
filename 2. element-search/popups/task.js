@@ -1,10 +1,8 @@
 const modalMain = document.getElementById("modal_main");
 const modalSuccess = document.getElementById('modal_success');
 const btn = document.querySelector('.btn_danger');
-const close = document.querySelectorAll('.modal__close_times');
+const closes = document.querySelectorAll('.modal__close_times');
 
-close1 = close[0];
-close2 = close[1];
 
 //управление видимостью окон
 function switchModal(modal) {
@@ -20,13 +18,12 @@ function summonModal() {
 		switchModal(modalSuccess);	
 	};
 
-	close1.onclick = () => {
-		switchModal(modalMain);
-	};
-
-	close2.onclick = () => {
-		switchModal(modalSuccess);
-	};
-};
+	//определяем, какое окно нужно закрыть
+	for (let close of closes) {
+		close.onclick = () => {
+			parentModal = close.closest('.modal')
+			switchModal(parentModal);
+		}
+	}
 
 summonModal();

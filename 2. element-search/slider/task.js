@@ -5,48 +5,42 @@ const slidesArr = Array.from(slides);
 
 function slider() {
 
-	function prewSlide() {
-		for (let slide of slidesArr) {
-			if (slide.classList.contains('slider__item_active')) {
-				let num = slidesArr.indexOf(slide);
-				slide.classList.toggle('slider__item_active')
-
-				if (slidesArr[num - 1]) {
-					slidesArr[num - 1].classList.toggle('slider__item_active')
-				} else {
-					slidesArr[slidesArr.length - 1].classList.toggle('slider__item_active')
-				}
-			}
-		}
+//находим индекс активного слайда
+	function activeSlide(element) {
+		return element.classList.contains('slider__item_active')
 	}
 
+//находим и активируем предыдущий слайд
+	function prewSlide(number) {
+		
+		number === 0 ? slidesArr[slidesArr.length - 1].classList.toggle('slider__item_active') 
+		: slidesArr[number - 1].classList.toggle('slider__item_active')
+
+	}
+//находим и активируем следующий слайд
 	function nextSlide(number) {
-		for (let slide of slidesArr) {
-			if (slide.classList.contains('slider__item_active')) {
-				let num = slidesArr.indexOf(slide);
-				slide.classList.toggle('slider__item_active')
 
-				if (slidesArr[num + 1]) {
-					slidesArr[num + 1].classList.toggle('slider__item_active')
-				} else {
-					slidesArr[0].classList.toggle('slider__item_active')
-				}
-			}
-		}
+		number === slidesArr.length - 1 ? slidesArr[0].classList.toggle('slider__item_active') 
+		: slidesArr[number + 1].classList.toggle('slider__item_active')
 
 	}
 
 
+//обработчик событий в браузере
 	for (let arrow of Array.from(arrows)) {
 
 		arrow.onclick = () => {
-			// alert(arrow.classList)
 
+			//отключаем активный слайд
+			num = slidesArr.findIndex(activeSlide)
+			slidesArr[num].classList.toggle('slider__item_active')
+
+			//определяем направление смены слайдов
 			if (arrow.classList.contains('slider__arrow_next')) {
-				nextSlide();
+				nextSlide(num);
 			}
 			else {
-				prewSlide();
+				prewSlide(num);
 			}
 		}
 	}
