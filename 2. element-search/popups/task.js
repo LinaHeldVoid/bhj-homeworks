@@ -25,5 +25,6 @@ function summonModal() {
 			switchModal(parentModal);
 		}
 	}
+};
 
 summonModal();
