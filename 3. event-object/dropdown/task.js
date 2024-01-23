@@ -1,25 +1,32 @@
 const dropdown = document.getElementById("dropdown");
-const dropdown_list = document.getElementById("dropdown__list");
-// const value = document.getElementById("value");
-// const items = document.querySelectAll("dropdown__link");
+const dropdownList = document.getElementById("dropdown__list");
+const value = document.getElementById("value");
+const items = document.querySelectorAll(".dropdown__item");
 
-// function changeItem() {
-// 	for (let i = 0; i < 4; i++) {
-// 		const item = items[i]
+function changeItem() {
+	for (let item of Array.from(items)) {
 
-// 		item.onclick = () => {
-// 			value.textContent = item.textContent
-// 		};
-// 	};
-// };
+		item.onclick = () => {
+			alert(value.textContent)
+			alert(item.textContent)
+			value.textContent = item.textContent
+			alert(value.textContent)
+		};
+	};
+};
 
 dropdown.onclick = () => {
 
-	if (dropdown_list.className == "dropdown__list") {
-		dropdown_list.classList.add("dropdown__list_active");
+	dropdownList.classList.toggle("dropdown__list_active");
+
+	if (dropdownList.classList.contains("dropdown__list_active")) {
+		const subList = dropdown.querySelectorAll(".dropdown__link");
+		alert(Array.from(subList))
+
+		for (let sub of subList) {
+			sub.onclick = () => {
+				value.textContent = sub.textContent
+			}
 		}
-	else {
-		// changeItem
-		dropdown_list.className = "dropdown__list"
-		};
-};
+
+	}

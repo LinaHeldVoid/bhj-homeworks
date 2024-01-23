@@ -17,6 +17,15 @@ class Game {
   }
 
   registerEvents() {
+
+    function onKey(event) {
+      if(this.currentSymbol !== event.key) {
+        fail
+      }
+    }
+
+    container.addEventListener('keydown', onKey)
+    // document.addEventListener('keyup', onKey)
     /*
       TODO:
       Написать обработчик события, который откликается
