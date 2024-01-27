@@ -4,29 +4,20 @@ const value = document.getElementById("value");
 const items = document.querySelectorAll(".dropdown__item");
 
 function changeItem() {
-	for (let item of Array.from(items)) {
+	dropdown.onclick = () => {
+		dropdownList.classList.toggle("dropdown__list_active");
+		}
+
+
+	for (let item of items) {
 
 		item.onclick = () => {
-			alert(value.textContent)
-			alert(item.textContent)
 			value.textContent = item.textContent
-			alert(value.textContent)
+			console.log(value.textContent)
+			console.log(item.textContent)
+			return false;
 		};
 	};
 };
 
-dropdown.onclick = () => {
-
-	dropdownList.classList.toggle("dropdown__list_active");
-
-	if (dropdownList.classList.contains("dropdown__list_active")) {
-		const subList = dropdown.querySelectorAll(".dropdown__link");
-		alert(Array.from(subList))
-
-		for (let sub of subList) {
-			sub.onclick = () => {
-				value.textContent = sub.textContent
-			}
-		}
-
-	}
+changeItem()

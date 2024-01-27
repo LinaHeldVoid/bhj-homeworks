@@ -4,6 +4,7 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    this.currentSymbol = container.querySelector('.symbol');
 
     this.reset();
 
@@ -18,14 +19,22 @@ class Game {
 
   registerEvents() {
 
+    let i = 0
+
     function onKey(event) {
-      if(this.currentSymbol !== event.key) {
-        fail
+      this.currentSymbol = Array.from(document.querySelectorAll('.symbol'))[i].textContent;
+      if(this.currentSymbol == event.key) {
+        console.log(this.currentSymbol)
+        console.log(event.key)
+        this.success();
+        i += 1;
+      }
+      else {
+        this.fail();
       }
     }
 
-    container.addEventListener('keydown', onKey)
-    // document.addEventListener('keyup', onKey)
+      document.addEventListener('keydown', onKey)
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -61,10 +70,10 @@ class Game {
     this.setNewWord();
   }
 
-  setNewWord() {
-    const word = this.getWord();
+    setNewWord() {
+      const word = this.getWord();
 
-    this.renderWord(word);
+      this.renderWord(word);
   }
 
   getWord() {
